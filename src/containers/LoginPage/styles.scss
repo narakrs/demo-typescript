@@ -1,0 +1,17 @@
+$myColorBackground: #67ebdb;
+$myColorborder:#bfbdbd;
+.login{
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color: $myColorBackground;
+    .card_login{
+        width: 420px;
+        background-color: white;
+        border: solid 1px $myColorborder;
+        border-radius: 5px;
+        padding: 20px 0px 10px 0px;
+    }
+}
