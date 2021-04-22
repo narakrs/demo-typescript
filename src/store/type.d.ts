@@ -1,16 +1,18 @@
 interface IArticle {
-    id: number
+    id: string
     title: string
-    body: string
+    body: string,
+    status:number
 }
-
 type ArticleState = {
-    articles: IArticle[]
+    articles: IArticle[],
+    login: boolean
+    
 }
 
 type ArticleAction = {
     type: string
-    article: IArticle
+    article: IArticle,
 }
 
 type DispatchType = (args: ArticleAction) => ArticleAction

@@ -7,10 +7,13 @@ const layout = {
 const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
 };
-
-const LoginForm = () => {
+type CardProps = {
+    onLogin: (username: string,password:string) => void;
+}
+const LoginForm = ({onLogin}: CardProps) => {
     const onFinish = (values: any) => {
-        console.log('Success:', values);
+        const {username,password}= values;
+        onLogin(username,password);
     };
 
     const onFinishFailed = (errorInfo: any) => {

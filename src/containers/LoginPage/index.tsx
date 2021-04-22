@@ -3,24 +3,26 @@ import { BrowserRouter as Router, Route, Link, RouteComponentProps } from "react
 import LoginForm from './../../component/LoginForm';
 import { Dispatch } from "redux"
 import { useSelector, shallowEqual, useDispatch } from "react-redux"
-import { addArticle, removeArticle } from "./../../store/actionCreators";
+import { addArticle, removeArticle,onAtlogin} from "./../../store/actionCreators";
 import './styles.scss';
+import Password from "antd/lib/input/Password";
 function Login() {
   const articles: readonly IArticle[] = useSelector(
     (state: ArticleState) => state.articles,
     shallowEqual
   )
 
-  // const dispatch: Dispatch<any> = useDispatch()
+  const dispatch: Dispatch<any> = useDispatch()
 
-  // const saveArticle = React.useCallback(
-  //   (article: IArticle) => dispatch(addArticle(article)),
-  //   [dispatch]
-  // )
+  const onLogin=(username:string,password:string)=>{
+    console.log('goij');
+    const data={username,password};
+    dispatch(onAtlogin(data));
+  }
   console.log('state',articles);
   return (<div className="login">
     <div className="card_login">
-    <LoginForm></LoginForm>
+    <LoginForm onLogin={(username,password)=>onLogin(username,password)}></LoginForm>
     </div>
   </div>);
 }

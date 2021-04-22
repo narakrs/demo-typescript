@@ -7,10 +7,11 @@ import { createStore, applyMiddleware, Store } from "redux"
 import { Provider } from "react-redux"
 import thunk from "redux-thunk"
 import 'antd/dist/antd.css';
-import reducer from "./store/reducer"
+import reducer from "./store/reducer";
+import { composeWithDevTools } from 'redux-devtools-extension';
 const store: Store<ArticleState, ArticleAction> & {
   dispatch: DispatchType
-} = createStore(reducer,applyMiddleware(thunk))
+} = createStore(reducer,composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <React.StrictMode>
