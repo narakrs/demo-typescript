@@ -1,19 +1,19 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 
 const layout = {
-    labelCol: { span:  6},
+    labelCol: { span: 6 },
     wrapperCol: { span: 16 },
 };
 const tailLayout = {
     wrapperCol: { offset: 8, span: 16 },
 };
 type CardProps = {
-    onLogin: (username: string,password:string) => void;
+    onLogin: (username: string, password: string) => void;
 }
-const LoginForm = ({onLogin}: CardProps) => {
+const LoginForm = ({ onLogin }: CardProps) => {
     const onFinish = (values: any) => {
-        const {username,password}= values;
-        onLogin(username,password);
+        const { username, password } = values;
+        onLogin(username, password);
     };
 
     const onFinishFailed = (errorInfo: any) => {
@@ -28,7 +28,7 @@ const LoginForm = ({onLogin}: CardProps) => {
             onFinish={onFinish}
             onFinishFailed={onFinishFailed}
         >
-            <h2 style={{width:'100%',textAlign:'center'}}>Login</h2>
+            <h2 style={{ width: '100%', textAlign: 'center' }}>Login</h2>
             <Form.Item
                 label="Username"
                 name="username"
@@ -40,7 +40,9 @@ const LoginForm = ({onLogin}: CardProps) => {
             <Form.Item
                 label="Password"
                 name="password"
-                rules={[{ required: true, message: 'Please input your password!' }]}
+                rules={[{ required: true, message: 'Please input your password!' },
+                { min: 8, message: 'Password must be minimum 8 characters!' }
+                ]}
             >
                 <Input.Password />
             </Form.Item>

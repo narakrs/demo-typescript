@@ -18,7 +18,8 @@ const initialState: ArticleState = {
     // },
   ],
   login: false,
-  loading:false
+  loading: false,
+  message: ""
 }
 const reducer = (
   state: ArticleState = initialState,
@@ -26,21 +27,22 @@ const reducer = (
 ): ArticleState => {
   switch (action.type) {
     case actionTypes.GET_ARTICLE:
-      const articles:IArticle[]=action.articles;
+      const articles: IArticle[] = action.articles;
       return {
         ...state,
         articles: [...articles],
       }
     case actionTypes.ADD_ARTICLE:
       const newArticle: IArticle = {
-        id: "15", // not really unique
+        id: action.articles[0].id, // not really unique
         title: action.articles[0].title,
         body: action.articles[0].body,
-        status:2
+        status: action.articles[0].status
       }
       return {
         ...state,
         articles: state.articles.concat(newArticle),
+        message: "Update Success"
       }
     case actionTypes.REMOVE_ARTICLE:
       const updatedArticles: IArticle[] = state.articles.filter(
@@ -50,11 +52,47 @@ const reducer = (
         ...state,
         articles: updatedArticles,
       }
+    case actionTypes.EDIT_ARTICLE:
+      const editArticles: IArticle[] = state.articles;
+      const index:any = editArticles.findIndex((item: any )=> item.id===action.articles[0].id);
+      editArticles[index]=action.articles[0];
+      return {
+        ...state,
+        articles:[...editArticles],
+        message: "Update Success"
+      }
     case actionTypes.ON_LOGIN:
       return {
         ...state,
-        login: true
+        login: true,
+        message: ""
       }
+    case actionTypes.ON_LOGIN_ERR:
+      return {
+        ...state,
+        message: "wrong username or password!"
+      }
+    case actionTypes.ON_LOGOUT:
+      return {
+        ...state,
+        login: false,
+        message: ""
+      }
+    case actionTypes.ON_LOADING:
+      return {
+        ...state,
+        loading: true
+      }
+    case actionTypes.OUT_LOADING:
+      return {
+        ...state,
+        loading: false
+      }
+    case actionTypes.SET_MESSAGE:
+      return {
+        ...state,
+        message:""
+    }
   }
   return state
 }

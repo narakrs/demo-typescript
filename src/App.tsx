@@ -1,9 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Link, RouteComponentProps } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link} from "react-router-dom";
 import LoginPage from "./containers/LoginPage/index";
-import Product from './containers/DashboardPage/index';
-import { useSelector, shallowEqual, useDispatch } from "react-redux";
+import Dashboard from './containers/DashboardPage/index';
+import Product from './containers/ProductPage/index';
+import { useSelector, shallowEqual} from "react-redux";
 import { Layout, Menu, Breadcrumb } from 'antd';
+import { useDispatch } from "react-redux";
+import { onAtLogout} from "./store/actionCreators";
+import { Dispatch } from "redux"
+import loadingimage from './atset/image/loading.gif';
 import './styles.scss';
 const { Header, Content, Footer } = Layout;
 function AppRouter() {
@@ -11,20 +15,36 @@ function AppRouter() {
     (state: ArticleState) => state.login,
     shallowEqual
   )
-  console.log("dad", login);
-  if (login == false) {
-    return <LoginPage />
+  const loading: boolean = useSelector(
+    (state: ArticleState) => state.loading,
+    shallowEqual
+  )
+  const dispatch: Dispatch<any> = useDispatch()
+  const onLogout=()=>{
+    dispatch(onAtLogout());
+  }
+  if (login === false) {
+    return(<>
+    <div className="loading" style={{display:loading===true?"flex":"none"}}>
+      <img src={loadingimage} alt="loading"></img>
+    </div>
+    <LoginPage />
+    </>) 
   }
   return (
     <Router>
       <div>
+      <div className="loading" style={{display:loading===true?"flex":"none"}}>
+      <img src={loadingimage} alt="loading"></img>
+      </div>
         <Layout className="layout">
           <Header>
             <div className="logo" />
             <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-              <Menu.Item key="1"><Link to="/products/1">nav 1</Link></Menu.Item>
-              <Menu.Item key="2"><Link to="/products/2">nav 2</Link></Menu.Item>
-              <Menu.Item key="3"><Link to="/products/3">nav 3</Link></Menu.Item>
+              <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
+              <Menu.Item key="2">nav 1</Menu.Item>
+              <Menu.Item key="3">nav 2</Menu.Item>
+              <Menu.Item key="4" onClick={()=>onLogout()}>Logout</Menu.Item>
             </Menu>
           </Header>
           <Content style={{ padding: '0 50px' }}>
@@ -32,7 +52,7 @@ function AppRouter() {
               <Breadcrumb.Item>Home</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-content">
-            <Route path="/" exact component={Product} />
+            <Route path="/" exact component={Dashboard} />
             <Route path="/products/:id" component={Product} />
             </div>
           </Content>

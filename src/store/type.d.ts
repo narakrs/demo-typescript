@@ -7,7 +7,8 @@ interface IArticle {
 type ArticleState = {
     articles: IArticle[],
     login: boolean,
-    loading:boolean
+    loading:boolean,
+    message:string
     
 }
 
