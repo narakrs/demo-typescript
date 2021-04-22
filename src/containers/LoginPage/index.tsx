@@ -15,11 +15,9 @@ function Login() {
   const dispatch: Dispatch<any> = useDispatch()
 
   const onLogin=(username:string,password:string)=>{
-    console.log('goij');
     const data={username,password};
     dispatch(onAtlogin(data));
   }
-  console.log('state',articles);
   return (<div className="login">
     <div className="card_login">
     <LoginForm onLogin={(username,password)=>onLogin(username,password)}></LoginForm>

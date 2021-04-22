@@ -6,13 +6,14 @@ interface IArticle {
 }
 type ArticleState = {
     articles: IArticle[],
-    login: boolean
+    login: boolean,
+    loading:boolean
     
 }
 
 type ArticleAction = {
     type: string
-    article: IArticle,
+    articles: IArticle[],
 }
 
 type DispatchType = (args: ArticleAction) => ArticleAction
