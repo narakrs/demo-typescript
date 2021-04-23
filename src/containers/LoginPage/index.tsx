@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useSelector, shallowEqual} from "react-redux";
 import { onAtlogin} from "./../../store/actionCreators";
 import './styles.scss';
+import './style.css';
 function Login() {
   const message: string = useSelector(
     (state: ArticleState) => state.message,

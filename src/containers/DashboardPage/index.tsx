@@ -31,10 +31,10 @@ function Dashboard() {
     <Button type="primary" className="btn_add_art"><Link to="/products/add-article"><span className="fa fa-plus"></span>  Add article</Link></Button>
     <table>
       <tr>
-        <th>name Task</th>
-        <th>body</th>
-        <th>status</th>
-        <th>actions</th>
+        <th>Name Task</th>
+        <th>Body</th>
+        <th>Status</th>
+        <th>Actions</th>
       </tr>
       {articles?articles.map((item,index)=>(
         <tr key={index}>

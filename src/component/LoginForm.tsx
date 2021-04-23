@@ -5,7 +5,7 @@ const layout = {
     wrapperCol: { span: 16 },
 };
 const tailLayout = {
-    wrapperCol: { offset: 8, span: 16 },
+    wrapperCol: { offset: 6, span: 16 },
 };
 type CardProps = {
     onLogin: (username: string, password: string) => void;
@@ -15,11 +15,9 @@ const LoginForm = ({ onLogin }: CardProps) => {
         const { username, password } = values;
         onLogin(username, password);
     };
-
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
-
     return (
         <Form
             {...layout}

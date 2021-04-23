@@ -1,0 +1,23 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "se_thanh",
+      "password": "12345678"
+    }
+  ],
+  "article": [
+    {
+      "title": "training reactJS",
+      "body": "redux-saga",
+      "status": 0,
+      "id": 1
+    },
+    {
+      "title": "training laravel",
+      "body": "authent jwt",
+      "status": 0,
+      "id": 2
+    }
+  ]
+}

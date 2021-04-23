@@ -39,14 +39,21 @@
                 background-color: white;
             }
             .editcolor{
-                border: solid 1px #fcba03;
-                color: #fcba03;
-                background-color: #faf5e8;
+                border: solid 1px blue;
+                color: blue;
+                background-color: #edf4ff;
+            }
+            .editcolor:hover{
+                border: solid 1px #0ab8f2;
             }
             .removecolor{
                 border: solid 1px red;
                 color: red;
                 background-color: #faebeb;
+            }
+            .removecolor:hover{
+                border: solid 1px #ff443d;
+                color: #ff443d;
             }
         }
         span{

@@ -49,7 +49,7 @@ function AppRouter() {
           </Header>
           <Content style={{ padding: '0 50px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>Home</Breadcrumb.Item>
+              <Breadcrumb.Item>Demo App Typescript</Breadcrumb.Item>
             </Breadcrumb>
             <div className="site-layout-content">
             <Route path="/" exact component={Dashboard} />

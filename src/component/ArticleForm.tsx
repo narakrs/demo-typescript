@@ -63,7 +63,7 @@ const ArticleForm = ({onAddArticle,title,body,status}: CardProps) => {
                 </Select>
             </Form.Item>
             <Form.Item {...tailLayout}>
-                <Button type="primary" htmlType="submit">Submit</Button>
+                <Button type={title===""?"primary":"ghost"} htmlType="submit">{title===""?"Add Article":"Edit Article"}</Button>
             </Form.Item>
         </Form>
     );

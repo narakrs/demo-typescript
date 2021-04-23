@@ -27,12 +27,12 @@ function Product({ match }: RouteComponentProps<TParams>) {
   }
   return (<div>
     <div>
-      <h1>{match.params.id.toUpperCase()}</h1>
+      <h1>{match.params.id!=="add-article"?"Edit":match.params.id.toUpperCase()}</h1>
       <ArticalForm onAddArticle={(title, body, status) => onAddArticle(title, body, status)} 
       title={match.params.id!=="add-article"?found.title:""} 
       body={match.params.id!=="add-article"?found.body:""}
       status={match.params.id!=="add-article"?Number(found.status):0}></ArticalForm>
-      <h3>{message}</h3>
+      <h3 className="message_product">{message}</h3>
     </div>
   </div>);
 }
